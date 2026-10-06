@@ -6,7 +6,7 @@
 
 ## Windows 使用
 
-1. 安装 [Node.js 24 LTS](https://nodejs.org/)，下载项目并解压。
+1. 安装 [Node.js 24 LTS](https://nodejs.org/)，下载 [v0.1.1 Windows 启动包](https://github.com/gzpagg/-/releases/download/v0.1.1/aura-tv-windows.zip) 并解压。
 2. 双击 `start-windows.cmd`。首次运行会安装依赖、构建应用，并打开浏览器。使用期间保留终端窗口。
 3. 用 Edge / Chrome 打开后，可通过地址栏安装按钮，或菜单「应用 → 将此站点作为应用安装」，获得独立桌面窗口。
 
@@ -47,12 +47,12 @@ npm run build
 npm test
 ```
 
-浏览器功能测试需要 Chromium 与 ffmpeg：
+浏览器功能测试需要 ffmpeg 和支持 H.264/AAC 的浏览器。GitHub Actions 使用正式版 Chrome；部分开源 Chromium 构建缺少对应编解码器。Linux 示例：
 
 ```bash
-# 云环境使用已安装的系统 Chromium；其他系统先安装浏览器
-npx playwright install chromium
-npm run test:e2e
+# 使用已安装的 Google Chrome，也可替换为支持 H.264/AAC 的浏览器路径
+PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/google-chrome node scripts/verify-browser.mjs
+PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/google-chrome npm run test:e2e
 ```
 
 生产验证与打包：

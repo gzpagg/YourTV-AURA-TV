@@ -24,12 +24,19 @@
 
 回归时发现长期运行的开发服务在依赖重装后返回 `504 Outdated Optimize Dep`，导致三项播放检查失败。重启本次开发服务并使用 `--force` 重建 Vite 依赖缓存后，完整 20 项浏览器测试通过；未削弱测试断言或更改播放器逻辑。
 
+## GitHub 发布结果
+
+- [v0.1.1 发布流水线](https://github.com/gzpagg/-/actions/runs/37431375132) 成功：依赖安装、24 项单元测试、20 项浏览器测试、两种路径的生产验证与打包全部通过。
+- 初次云端检查中，两项 HLS 解码测试失败。Ubuntu runner 的 Chromium snapshots 缺少所需编解码支持；改用预装的正式版 Google Chrome，增加 H.264/AAC 能力预检后通过，播放断言保持不变。
+- [公开预览版 Release](https://github.com/gzpagg/-/releases/tag/v0.1.1) 已发布，附件为 Windows 启动 ZIP 和 SHA256SUMS。已重新下载公开附件并校验，SHA-256 与本地包一致：`540065fc99016d47190d7d40828c1d517879023e6a547f6f3500efe202031247`。
+- [main 网页部署流水线](https://github.com/gzpagg/-/actions/runs/37431373209) 的构建通过，Pages 部署未完成。仓库尚未开启 Pages；调用官方创建接口返回 `403 Resource not accessible by integration`，当前集成凭据缺少设置权限。仓库管理员需在 Settings → Pages 选择 GitHub Actions，然后重跑失败的部署 job。
+
 ## 尚未完成
 
 - CCTV、CNN 等官方页面以及三个公网候选 HLS 的实播：当前代理在连接阶段拦截媒体域名，详见 SOURCES.md。
 - 云端浏览器对真实 GitHub Raw 列表的链接读取：Chromium 返回 `net::ERR_CERT_AUTHORITY_INVALID`，而 Python 默认 TLS 校验读取成功。系统 CA 和当前用户 NSS 均已包含并信任平台公共根，未找到可据此修复的缺失根证书；没有禁用证书验证。链接读取的成功、失败、取消流程通过受控网络测试，真实数据通过文件/粘贴导入验证；公网浏览器读取仍未验证。
 - 用户新提供的三个外部配置和五个 CGTN 多语种源：仍被云网络策略拦截，详见 TVBOX.md。
 - 真实 Windows 机器上的 `.cmd` 执行和浏览器安装对话框操作。当前使用系统 Chromium 验证功能、清单与图标。
-- 远端部署、环境发布及新任务恢复：未执行。
+- Pages 在线部署尚未完成；Windows 启动 ZIP 已发布，详情见上方发布结果。云环境配置草稿的正式发布及新任务恢复未验证。
 
 本地 HLS 测试不是广播机构公网可用性的证明。高清上限、订阅条件与地区可用性取决于源站。
