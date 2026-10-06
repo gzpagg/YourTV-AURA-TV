@@ -1,0 +1,11 @@
+node_modules/
+dist/
+release/
+__pycache__/
+test-results/
+playwright-report/
+tests/.media/
+.env
+.env.*
+!.env.example
+*.log

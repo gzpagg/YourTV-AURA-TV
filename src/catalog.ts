@@ -1,0 +1,77 @@
+import type { Channel } from './domain';
+
+// Official pages and publicly listed broadcaster endpoints. Reachability is regional;
+// see docs/SOURCES.md for provenance and the exact validation limitations.
+export const channels: Channel[] = [
+  {
+    id: 'cctv13', name: 'CCTV-13', subtitle: '新闻频道 · 关注每一刻',
+    description: '聚焦中国与世界，在央视官方页面观看新闻频道。', category: '央视',
+    language: '中文', country: '中国', accent: '#ec4b58', mark: 'CCTV¹³',
+    mode: 'official', url: 'https://tv.cctv.com/live/cctv13/',
+    officialUrl: 'https://tv.cctv.com/live/cctv13/', sourceName: '央视网',
+    sourceUrl: 'https://tv.cctv.com/live/cctv13/',
+    note: '通过央视网观看。节目、画质与可用地区以官方页面为准。',
+  },
+  {
+    id: 'cctv1', name: 'CCTV-1', subtitle: '综合频道 · 陪伴每一天',
+    description: '新闻、人文与精彩节目，前往央视综合频道官方直播。', category: '央视',
+    language: '中文', country: '中国', accent: '#d99164', mark: 'CCTV¹',
+    mode: 'official', url: 'https://tv.cctv.com/live/cctv1/',
+    officialUrl: 'https://tv.cctv.com/live/cctv1/', sourceName: '央视网',
+    sourceUrl: 'https://tv.cctv.com/live/cctv1/',
+    note: '通过央视网观看。节目、画质与可用地区以官方页面为准。',
+  },
+  {
+    id: 'cnn', name: 'CNN', subtitle: '国际新闻 · 多一个视角',
+    description: '前往 CNN 官方观看页面，了解全球新闻。', category: '国际',
+    language: '英语', country: '美国', accent: '#e93143', mark: 'CNN',
+    mode: 'official', url: 'https://www.cnn.com/live-tv',
+    officialUrl: 'https://www.cnn.com/live-tv', sourceName: 'CNN',
+    sourceUrl: 'https://www.cnn.com/live-tv',
+    note: 'CNN 线性直播可能需要订阅、电视服务商登录，或受地区限制；此入口不承诺免费直播。官方公开视频可直接在官网浏览。',
+  },
+  {
+    id: 'france24', name: 'FRANCE 24', subtitle: '国际新闻 · 来自巴黎的视角',
+    description: '英语新闻、现场报道与深入访谈，连接世界正在发生的故事。', category: '国际',
+    language: '英语', country: '法国', accent: '#41bedf', mark: 'FRANCE\n24',
+    mode: 'hls', url: 'https://live.france24.com/hls/live/2037218/F24_EN_HI_HLS/master_5000.m3u8',
+    officialUrl: 'https://www.france24.com/en/live', sourceName: 'France 24 官方域名',
+    sourceUrl: 'https://github.com/iptv-org/iptv/blob/master/streams/fr.m3u',
+    note: '公开目录收录的官方域名播放地址。画质与可用性取决于源站及所在地区；无法播放时可前往官网。',
+  },
+  {
+    id: 'cgtn', name: 'CGTN', subtitle: '环球视野 · 英语新闻',
+    description: '从不同视角发现全球新闻、文化与故事。', category: '国际',
+    language: '英语', country: '中国', accent: '#cead6b', mark: 'CGTN',
+    mode: 'hls', url: 'https://english-livebkali.cgtn.com/live/encgtn.m3u8',
+    officialUrl: 'https://www.cgtn.com/tv', sourceName: 'CGTN 官方域名',
+    sourceUrl: 'https://github.com/iptv-org/iptv/blob/master/streams/cn.m3u',
+    note: '公开目录收录的官方域名播放地址。自动选择源站可用画质；频道可能受地区或跨域策略限制。',
+  },
+  {
+    id: 'dw', name: 'DW English', subtitle: '国际新闻 · 理解世界',
+    description: '德国之声英语新闻与专题，打开看世界的另一扇窗。', category: '国际',
+    language: '英语', country: '德国', accent: '#9ba8ed', mark: 'DW',
+    mode: 'hls', url: 'https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/master.m3u8',
+    officialUrl: 'https://www.dw.com/en/live-tv/s-100825', sourceName: 'DW 公共直播 CDN',
+    sourceUrl: 'https://github.com/iptv-org/iptv/blob/master/streams/de.m3u',
+    note: '公开目录收录的 DW 英语直播 CDN。地址可能变化；无法播放时可前往官方直播页面。',
+  },
+  {
+    id: 'nasa', name: 'NASA+', subtitle: '探索宇宙 · 让好奇心远行',
+    description: '在 NASA 官方流媒体平台发现太空任务、科学与地球的故事。', category: '探索',
+    language: '英语', country: '美国', accent: '#708bed', mark: 'NASA+',
+    mode: 'official', url: 'https://plus.nasa.gov/', officialUrl: 'https://plus.nasa.gov/',
+    sourceName: 'NASA', sourceUrl: 'https://plus.nasa.gov/',
+    note: 'NASA 官方公开节目平台，直播安排以官网为准。',
+  },
+  {
+    id: 'cctv9', name: 'CCTV-9', subtitle: '纪录频道 · 看见真实的力量',
+    description: '自然、人文与时代故事，在央视纪录频道探索更多。', category: '央视',
+    language: '中文', country: '中国', accent: '#8fb48a', mark: 'CCTV⁹',
+    mode: 'official', url: 'https://tv.cctv.com/live/cctv9/',
+    officialUrl: 'https://tv.cctv.com/live/cctv9/', sourceName: '央视网',
+    sourceUrl: 'https://tv.cctv.com/live/cctv9/',
+    note: '通过央视网观看。节目、画质与可用地区以官方页面为准。',
+  },
+];
