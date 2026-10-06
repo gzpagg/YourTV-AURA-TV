@@ -30,9 +30,13 @@ jobs:
           sudo apt-get install -y ffmpeg
           npx playwright install --with-deps chromium
       - name: Run browser tests
-        run: npm run test:e2e
+        run: npm run test:e2e -- --reporter=list,json
         env:
           CI: 'true'
+          PLAYWRIGHT_JSON_OUTPUT_FILE: playwright-results.json
+      - name: Report browser failures
+        if: failure()
+        run: node scripts/report-test-failures.mjs
       - name: Build desktop startup package
         run: |
           npm run build

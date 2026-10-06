@@ -4,6 +4,7 @@ release/
 __pycache__/
 test-results/
 playwright-report/
+playwright-results.json
 tests/.media/
 .env
 .env.*
