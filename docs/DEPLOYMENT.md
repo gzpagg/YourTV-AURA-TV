@@ -6,7 +6,7 @@
 
 `.github/workflows/publish.yml` 使用固定提交版本的 GitHub 官方 Actions：
 
-1. 安装锁定依赖，执行单元测试及 Chromium/FFmpeg 浏览器测试。
+1. 安装锁定依赖，执行单元测试及 Chrome/FFmpeg 浏览器测试。流水线使用 Ubuntu 24.04 预装的 Google Chrome，并先验证 H.264/AAC 支持，避免开源 Chromium 构建缺少编解码器。
 2. 构建根路径应用，验证 PWA、图标、离线壳、许可证和作用域，生成 Windows 启动包及 SHA-256。
 3. 用 `APP_BASE_PATH=/<仓库名>/` 构建 GitHub Pages，再执行生产验证。
 4. `main` 分支通过构建后部署 Pages；`v*` 标签通过构建后创建带 ZIP 附件的 GitHub 预览版 Release。
